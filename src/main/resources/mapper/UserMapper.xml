@@ -4,19 +4,27 @@
   <resultMap id="BaseResultMap" type="com.coming.look.domain.User" >
     <id column="Id" property="id" jdbcType="BIGINT" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="age" property="age" jdbcType="INTEGER" />
     <result column="birth_day" property="birthDay" jdbcType="VARCHAR" />
+    <result column="cell_phone" property="cellPhone" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    Id, user_name, age, birth_day, create_time
+    Id, user_name, password, age, birth_day, cell_phone, open_id, create_time
   </sql>
 
   <insert id="insert">
-      INSERT INTO USER (user_name,age,birth_day,create_time) VALUES (#{userName},#{age},#{birthDay},#{createTime})
+      insert into user (Id, user_name, password,
+      age, birth_day, cell_phone,
+      open_id, create_time)
+    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{age,jdbcType=INTEGER}, #{birthDay,jdbcType=VARCHAR}, #{cellPhone,jdbcType=VARCHAR},
+      #{openId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
 
   <delete id="deleteUser">
-    DELETE FROM USER
+    delete from user
   </delete>
 </mapper>
