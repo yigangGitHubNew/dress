@@ -1,5 +1,7 @@
 package com.coming.look.controller;
 
+import com.coming.look.domain.DressResponse;
+import com.coming.look.domain.Shop;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +16,10 @@ public class HelloWorldController {
 
     @RequestMapping("/hello")
     @ResponseBody
-    public String sayHello() {
-        return "Hello,World!";
+    public DressResponse sayHello() {
+        Shop shop = new Shop();
+        shop.setAddress("杭州市江干区");
+        return new DressResponse(true,shop);
     }
 
 

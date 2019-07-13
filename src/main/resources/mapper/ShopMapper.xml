@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coming.look.dao.ShopMapper">
+  <resultMap id="BaseResultMap" type="com.coming.look.domain.Shop">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, shop_name, longitude, latitude, image_url, address, create_time
+  </sql>
+  <insert id="insert" parameterType="com.coming.look.domain.Shop">
+    insert into shop (id, shop_name, longitude,
+      latitude, image_url, address,
+      create_time)
+    values (#{id,jdbcType=BIGINT}, #{shopName,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR},
+      #{latitude,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+</mapper>
