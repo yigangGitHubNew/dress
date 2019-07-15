@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coming.look.dao.ReserveMapper">
+  <resultMap id="BaseResultMap" type="com.coming.look.domain.Reserve">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="sku_info_id" jdbcType="BIGINT" property="skuInfoId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="start_date" jdbcType="VARCHAR" property="startDate" />
+    <result column="start_time" jdbcType="VARCHAR" property="startTime" />
+    <result column="end_date" jdbcType="VARCHAR" property="endDate" />
+    <result column="end_time" jdbcType="VARCHAR" property="endTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sku_info_id, user_id, status, code, start_date, start_time, end_date, end_time, 
+    create_time
+  </sql>
+  <insert id="insert" parameterType="com.coming.look.domain.Reserve">
+    insert into reserve (id, sku_info_id, user_id, 
+      status, code, start_date, 
+      start_time, end_date, end_time, 
+      create_time)
+    values (#{id,jdbcType=BIGINT}, #{skuInfoId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{status,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{startDate,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=VARCHAR}, #{endDate,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+</mapper>

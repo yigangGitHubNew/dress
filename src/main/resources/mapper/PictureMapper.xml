@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.coming.look.dao.PictureMapper" >
+  <resultMap id="BaseResultMap" type="com.coming.look.domain.Picture" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="holder_id" property="holderId" jdbcType="BIGINT" />
+    <result column="is_start" property="isStart" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, holder_id, is_start, url, classify, create_time
+  </sql>
+  <insert id="insert" parameterType="com.coming.look.domain.Picture" >
+    insert into picture (id, holder_id, is_start, 
+      url, classify, create_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{holderId,jdbcType=BIGINT}, #{isStart,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{classify,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+</mapper>
