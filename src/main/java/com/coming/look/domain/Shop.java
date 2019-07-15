@@ -2,6 +2,9 @@ package com.coming.look.domain;
 
 import java.util.Date;
 
+/**
+ * 商圈的实体类
+ */
 public class Shop {
     /***/
     private Long id;
