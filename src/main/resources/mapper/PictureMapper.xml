@@ -1,18 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.coming.look.dao.PictureMapper" >
-  <resultMap id="BaseResultMap" type="com.coming.look.domain.Picture" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="holder_id" property="holderId" jdbcType="BIGINT" />
-    <result column="is_start" property="isStart" jdbcType="VARCHAR" />
-    <result column="url" property="url" jdbcType="VARCHAR" />
-    <result column="classify" property="classify" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coming.look.dao.PictureMapper">
+  <resultMap id="pictureResultMap" type="com.coming.look.domain.Picture">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="holder_id" jdbcType="BIGINT" property="holderId" />
+    <result column="is_start" jdbcType="VARCHAR" property="isStart" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="classify" jdbcType="VARCHAR" property="classify" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, holder_id, is_start, url, classify, create_time
   </sql>
-  <insert id="insert" parameterType="com.coming.look.domain.Picture" >
+
+  <select id="listPicture" resultMap="pictureResultMap">
+    select <include refid="Base_Column_List"/> from picture where holder_id = #{holderId} and classify = #{classify}
+  </select>
+  <insert id="insert" parameterType="com.coming.look.domain.Picture">
     insert into picture (id, holder_id, is_start, 
       url, classify, create_time
       )

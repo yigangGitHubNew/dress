@@ -2,9 +2,6 @@ package com.coming.look.domain;
 
 import java.util.Date;
 
-/**
- * 图片实体类
- */
 public class Picture {
     /***/
     private Long id;
