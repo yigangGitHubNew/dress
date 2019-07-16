@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.coming.look.dao.GoodsMapper" >
-  <resultMap id="BaseResultMap" type="com.coming.look.domain.Goods" >
+  <resultMap id="goodsResultMap" type="com.coming.look.domain.Goods" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="store_id" property="storeId" jdbcType="BIGINT" />
     <result column="category" property="category" jdbcType="VARCHAR" />
@@ -11,6 +11,10 @@
   <sql id="Base_Column_List" >
     id, store_id, category, picture_url, create_time
   </sql>
+
+  <select id="listGoods" resultMap="goodsResultMap">
+    select <include refid="Base_Column_List"/> from goods where store_id = #{storeId}
+  </select>
   <insert id="insert" parameterType="com.coming.look.domain.Goods" >
     insert into goods (id, store_id, category, 
       picture_url, create_time)
