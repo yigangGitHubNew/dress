@@ -30,6 +30,8 @@ public class Reserve {
     /**预约的结束时间*/
     private String endTime;
 
+    private Date updateTime;
+
     /***/
     private Date createTime;
 
@@ -111,5 +113,13 @@ public class Reserve {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

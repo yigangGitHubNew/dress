@@ -53,7 +53,7 @@
         <table tableName="%"></table>
         的方式，会默认将数据表中的"_"去掉并以驼峰的形式生成实体类名
          -->
-        <table tableName="picture" domainObjectName="Picture"></table>
+        <table tableName="address" domainObjectName="Address"></table>
         <!-- 有些表的字段需要指定java类型
          <table schema="" tableName="">
             <columnOverride column="" javaType="" />
