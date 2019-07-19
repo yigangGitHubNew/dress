@@ -24,6 +24,15 @@ public class User {
     /**微信中返回的用户唯一标识*/
     private String openId;
 
+    /**回话秘钥*/
+    private String sessionKey;
+
+    /**加密后的key*/
+    private String skey;
+
+    /**登录状态 0-未登录 1-登录*/
+    private String loginStatus;
+
     /**创建日期*/
     private Date createTime;
 
@@ -89,5 +98,29 @@ public class User {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getSessionKey() {
+        return sessionKey;
+    }
+
+    public void setSessionKey(String sessionKey) {
+        this.sessionKey = sessionKey;
+    }
+
+    public String getLoginStatus() {
+        return loginStatus;
+    }
+
+    public void setLoginStatus(String loginStatus) {
+        this.loginStatus = loginStatus;
+    }
+
+    public String getSkey() {
+        return skey;
+    }
+
+    public void setSkey(String skey) {
+        this.skey = skey;
     }
 }

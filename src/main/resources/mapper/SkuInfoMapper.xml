@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.coming.look.dao.SkuInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.coming.look.domain.SkuInfo" >
+  <resultMap id="skuResultMap" type="com.coming.look.domain.SkuInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="goods_id" property="goodsId" jdbcType="BIGINT" />
     <result column="color" property="color" jdbcType="VARCHAR" />
+    <result column="name" property="goodsName" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, goods_id, color, create_time
+  </sql>
+  <sql id="alias_Column_List" >
+    t1.id, t1.goods_id, t1.color, t1.create_time
   </sql>
   <insert id="insert" parameterType="com.coming.look.domain.SkuInfo" >
     insert into sku_info (id, goods_id, color, 
@@ -16,4 +20,16 @@
     values (#{id,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, #{color,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
+  
+  <select id="selectSkuDetails" resultMap="skuResultMap">
+      SELECT <include refid="alias_Column_List"/>,g.name from sku_info t1
+      left JOIN goods g on g.id = t1.goods_id WHERE t1.goods_id = #{goodsId}
+  </select>
+
+  <select id="reserveList" resultMap="skuResultMap">
+    SELECT <include refid="alias_Column_List"/>,g.name from sku_info t1
+    left join reserve r on t1.id = r.sku_info_id
+    LEFT JOIN goods g on t1.goods_id = g.id
+    where r.user_id = #{userId}
+  </select>
 </mapper>

@@ -1,6 +1,7 @@
 package com.coming.look.service;
 
 import com.coming.look.domain.Goods;
+import com.coming.look.domain.SkuInfo;
 
 import java.util.List;
 
@@ -16,4 +17,18 @@ public interface GoodsService {
      * @param storeId
      */
     List<Goods> listGoods(Long storeId);
+
+    /**
+     * 根据用户id查询预约商品
+     * @param userId
+     * @return
+     */
+    List<SkuInfo> reserveList(Long userId);
+
+    /**
+     * 查询商品的详细信息
+     * @param goodsId
+     * @return
+     */
+    List<SkuInfo> listSkuDetails(Long goodsId);
 }

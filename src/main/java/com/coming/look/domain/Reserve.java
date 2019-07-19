@@ -12,6 +12,9 @@ public class Reserve {
     /**用户id*/
     private Long userId;
 
+    /**店铺id*/
+    private Long storeId;
+
     /**0-未试衣 1-试衣期间 2-已过试衣时间 3-试衣成功*/
     private String status;
 
@@ -121,5 +124,13 @@ public class Reserve {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Long getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
     }
 }

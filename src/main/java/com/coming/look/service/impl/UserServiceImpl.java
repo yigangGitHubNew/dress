@@ -27,4 +27,9 @@ public class UserServiceImpl implements UserService{
     public int deleteUser() {
         return userMapper.deleteUser();
     }
+
+    @Override
+    public int updateUser(User user) {
+        return userMapper.update(user);
+    }
 }

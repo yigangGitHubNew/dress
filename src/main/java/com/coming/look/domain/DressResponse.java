@@ -15,6 +15,9 @@ public class DressResponse {
         this.data = obj;
     }
 
+    public DressResponse(){
+    }
+
     public boolean isSuccess() {
         return isSuccess;
     }

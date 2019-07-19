@@ -18,6 +18,9 @@ public class Goods {
     /**商品的图片地址*/
     private String pictureUrl;
 
+    /**商品的名称*/
+    private String name;
+
     /***/
     private Date createTime;
 
@@ -59,5 +62,13 @@ public class Goods {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

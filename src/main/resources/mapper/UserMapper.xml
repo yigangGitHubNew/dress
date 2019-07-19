@@ -9,20 +9,36 @@
     <result column="birth_day" property="birthDay" jdbcType="VARCHAR" />
     <result column="cell_phone" property="cellPhone" jdbcType="VARCHAR" />
     <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="session_key" property="sessionKey" jdbcType="VARCHAR" />
+    <result column="skey" property="skey" jdbcType="VARCHAR" />
+    <result column="login_status" property="loginStatus" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    Id, user_name, password, age, birth_day, cell_phone, open_id, create_time
+    Id, user_name, password, age, birth_day, cell_phone, open_id,session_key,login_status, skey,create_time
   </sql>
 
   <insert id="insert">
       insert into user (Id, user_name, password,
       age, birth_day, cell_phone,
-      open_id, create_time)
+      open_id,session_key,login_status,skey, create_time)
     values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{age,jdbcType=INTEGER}, #{birthDay,jdbcType=VARCHAR}, #{cellPhone,jdbcType=VARCHAR},
-      #{openId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+      #{openId,jdbcType=VARCHAR},#{sessionKey,jdbcType=VARCHAR},#{loginStatus,jdbcType=VARCHAR},#{skey,jdbcType=VARCHAR} #{createTime,jdbcType=TIMESTAMP})
   </insert>
+
+  <update id="update">
+    update user
+    <set>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionKey != null" >
+        session_key = #{sessionKey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    WHERE id = #{id,jdbcType=BIGINT}
+  </update>
 
   <delete id="deleteUser">
     delete from user

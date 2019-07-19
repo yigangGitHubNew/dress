@@ -5,6 +5,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="sku_info_id" jdbcType="BIGINT" property="skuInfoId" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="store_id" jdbcType="BIGINT" property="storeId" />
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="start_date" jdbcType="VARCHAR" property="startDate" />
@@ -15,15 +16,15 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, sku_info_id, user_id, status, code, start_date, start_time, end_date, end_time, 
+    id, sku_info_id, user_id, store_id, status, code, start_date, start_time, end_date, end_time,
     create_time
   </sql>
   <insert id="insert" parameterType="com.coming.look.domain.Reserve">
-    insert into reserve (id, sku_info_id, user_id, 
+    insert into reserve (id, sku_info_id, user_id, store_id,
       status, code, start_date, 
       start_time, end_date, end_time, update_time,
       create_time)
-    values (#{id,jdbcType=BIGINT}, #{skuInfoId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+    values (#{id,jdbcType=BIGINT}, #{skuInfoId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{storeId,jdbcType=BIGINT},
       #{status,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{startDate,jdbcType=VARCHAR}, 
       #{startTime,jdbcType=VARCHAR}, #{endDate,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR},
       #{updateTime,jdbcType=TIMESTAMP},
@@ -37,6 +38,9 @@
       </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=BIGINT},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=VARCHAR},
