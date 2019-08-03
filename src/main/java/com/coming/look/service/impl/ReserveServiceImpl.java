@@ -3,6 +3,7 @@ package com.coming.look.service.impl;
 import com.coming.look.dao.ReserveMapper;
 import com.coming.look.domain.Reserve;
 import com.coming.look.service.ReserveService;
+import com.coming.look.utils.GeneratorRandom;
 import com.coming.look.utils.IdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ public class ReserveServiceImpl implements ReserveService{
     @Override
     public int saveReserve(Reserve reserve) {
         reserve.setId(new IdGenerator().nextId());
+        reserve.setCode(GeneratorRandom.generateRandom());
         reserve.setUpdateTime(new Date());
         reserve.setCreateTime(new Date());
         return reserveMapper.insert(reserve);
