@@ -9,9 +9,10 @@
     <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, shop_name, longitude, latitude, image_url, address, create_time
+    id, shop_name, longitude, latitude, image_url, address, create_time,logo_url
   </sql>
 
   <select id="listShop" resultMap="shopResultMap">
@@ -25,9 +26,9 @@
   <insert id="insert" parameterType="com.coming.look.domain.Shop">
     insert into shop (id, shop_name, longitude,
       latitude, image_url, address,
-      create_time)
+      create_time,logo_url)
     values (#{id,jdbcType=BIGINT}, #{shopName,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR},
       #{latitude,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
-      #{createTime,jdbcType=TIMESTAMP})
+      #{createTime,jdbcType=TIMESTAMP},#{logoUrl,jdbcType=VARCHAR})
   </insert>
 </mapper>

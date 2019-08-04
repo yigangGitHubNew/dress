@@ -21,6 +21,9 @@ public class Shop {
     /**图片的地址*/
     private String imageUrl;
 
+    /**logo图片的地址*/
+    private String logoUrl;
+
     /**商圈的地址*/
     private String address;
 
@@ -114,5 +117,13 @@ public class Shop {
 
     public void setCount4MatchedGoods(Integer count4MatchedGoods) {
         this.count4MatchedGoods = count4MatchedGoods;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
     }
 }
